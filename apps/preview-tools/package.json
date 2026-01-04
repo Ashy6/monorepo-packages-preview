@@ -8,10 +8,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ashy1949/repo-hooks": "workspace:*",
-    "@ashy1949/repo-libs": "workspace:*",
-    "@ashy1949/repo-ui": "workspace:*",
-    "@ashy1949/repo-utils": "workspace:*",
+    "@ashy1949/repo-hooks": "^0.0.1",
+    "@ashy1949/repo-libs": "^0.0.1",
+    "@ashy1949/repo-ui": "^0.0.1",
+    "@ashy1949/repo-utils": "^0.0.1",
     "@tanstack/react-query": "^5.0.0",
     "clsx": "^2.0.0",
     "lucide-react": "^0.292.0",
