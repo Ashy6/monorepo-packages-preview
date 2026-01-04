@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDebounce } from '@my-repo/hooks'
-import { Input } from 'repo-ui'
+import { Input } from '@ashy1949/repo-ui'
 
 export function UseDebounceDemo() {
   const [inputValue, setInputValue] = useState('')

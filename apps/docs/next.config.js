@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["repo-ui"],
+  transpilePackages: ["@ashy1949/repo-ui"],
 };
 
 module.exports = nextConfig;

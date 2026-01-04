@@ -10,7 +10,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "repo-ui": "workspace:*",
+    "@ashy1949/repo-ui": "workspace:*",
     "@my-repo/hooks": "workspace:*",
     "@my-repo/utils": "workspace:*",
     "@my-repo/libs": "workspace:*",

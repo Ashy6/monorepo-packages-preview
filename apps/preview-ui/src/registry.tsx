@@ -24,8 +24,8 @@ export interface PackageDoc {
 }
 
 export const registry: Record<PackageName, PackageDoc> = {
-  'repo-ui': {
-    name: 'repo-ui',
+  '@ashy1949/repo-ui': {
+    name: '@ashy1949/repo-ui',
     label: 'UI Components',
     items: [
       { name: 'Button', description: 'A clickable button component with different variants.', component: ButtonDemo },

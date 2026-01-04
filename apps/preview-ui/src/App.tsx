@@ -3,7 +3,7 @@ import { Layout } from './components/Layout'
 import { registry, PackageName } from './registry'
 
 function App() {
-  const [currentPackage, setCurrentPackage] = useState<PackageName>('repo-ui')
+  const [currentPackage, setCurrentPackage] = useState<PackageName>('@ashy1949/repo-ui')
   const [currentComponent, setCurrentComponent] = useState<string>('')
 
   // Reset component selection when package changes

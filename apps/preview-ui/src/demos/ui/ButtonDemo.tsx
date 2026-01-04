@@ -1,4 +1,4 @@
-import { Button } from 'repo-ui'
+import { Button } from '@ashy1949/repo-ui'
 
 export function ButtonDemo() {
   return (

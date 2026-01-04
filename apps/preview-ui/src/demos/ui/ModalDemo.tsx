@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Modal, Button } from 'repo-ui'
+import { Modal, Button } from '@ashy1949/repo-ui'
 
 export function ModalDemo() {
   const [isModalOpen, setIsModalOpen] = useState(false)
