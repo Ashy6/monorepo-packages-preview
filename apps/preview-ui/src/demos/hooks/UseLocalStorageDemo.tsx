@@ -1,5 +1,5 @@
 import { useLocalStorage } from '@ashy1949/repo-hooks'
-import { Button, Input } from '@ashy1949/repo-ui'
+import { Input } from '@ashy1949/repo-ui'
 
 export function UseLocalStorageDemo() {
   const [storedValue, setStoredValue] = useLocalStorage('demo-key', 'default')

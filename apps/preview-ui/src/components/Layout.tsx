@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { registry, PackageName } from '../registry';
-import { Package, Menu, ChevronDown } from 'lucide-react';
+import { Package, ChevronDown } from 'lucide-react';
 
 interface LayoutProps {
   currentPackage: PackageName;

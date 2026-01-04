@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import ReactMarkdown from 'react-markdown'
 import { Layout } from './components/Layout'
 import { registry, PackageName } from './registry'
 
@@ -36,7 +37,7 @@ function App() {
             <p className="text-gray-600 text-lg">{componentData.description}</p>
           </div>
 
-          <section>
+          <section className="mb-12">
             <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
               <span className="w-1 h-6 bg-blue-600 rounded-full"></span>
               Preview
@@ -45,6 +46,35 @@ function App() {
               <div className="w-full">
                 <componentData.component />
               </div>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <span className="w-1 h-6 bg-gray-600 rounded-full"></span>
+              Source Code
+            </h2>
+            <div className="rounded-lg overflow-hidden border bg-gray-900 text-gray-100 p-6 shadow-md">
+               <ReactMarkdown 
+                components={{
+                  code({node, inline, className, children, ...props}: any) {
+                    return (
+                      <code className={`${className} font-mono text-sm`} {...props}>
+                        {children}
+                      </code>
+                    )
+                  },
+                  pre({node, children, ...props}: any) {
+                    return (
+                      <pre className="overflow-auto" {...props}>
+                        {children}
+                      </pre>
+                    )
+                  }
+                }}
+              >
+                {`\`\`\`tsx\n${componentData.code}\n\`\`\``}
+              </ReactMarkdown>
             </div>
           </section>
 
