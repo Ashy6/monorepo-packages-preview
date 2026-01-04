@@ -8,7 +8,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ipenman/ui": "^0.0.1",
+    "@ashy1949/repo-ui": "workspace:*",
+    "lucide-react": "^0.292.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.0.0",
     "@my-repo/hooks": "workspace:*",
     "@my-repo/libs": "workspace:*",
     "@my-repo/utils": "workspace:*",
@@ -19,6 +22,9 @@
     "wagmi": "^2.0.0"
   },
   "devDependencies": {
+    "autoprefixer": "^10.0.0",
+    "postcss": "^8.0.0",
+    "tailwindcss": "^3.3.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react": "^4.0.0",

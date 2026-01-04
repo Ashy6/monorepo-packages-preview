@@ -1,77 +1,66 @@
-import { useState } from 'react'
-import { formatDate, deepClone, currencyFormatter, truncateString } from '@my-repo/utils'
-import { useToggle, useDebounce, useLocalStorage } from '@my-repo/hooks'
-import { useWalletConnection } from '@my-repo/libs'
+import { useState, useEffect } from 'react'
+import { Layout } from './components/Layout'
+import { registry, PackageName } from './registry'
 
 function App() {
-  // Utils Demo State
-  const date = new Date()
-  const [cloneObj] = useState({ a: 1, b: { c: 2 } })
-  
-  // Hooks Demo State
-  const [isOn, toggle] = useToggle()
-  const [inputValue, setInputValue] = useState('')
-  const debouncedValue = useDebounce(inputValue, 500)
-  const [storedValue, setStoredValue] = useLocalStorage('demo-key', 'default')
+  const [currentPackage, setCurrentPackage] = useState<PackageName>('Usage Examples')
+  const [currentComponent, setCurrentComponent] = useState<string>('')
 
-  // Wagmi Demo State
-  const { address, isConnected, status, connect, disconnect } = useWalletConnection()
+  // Reset component selection when package changes
+  useEffect(() => {
+    const firstItem = registry[currentPackage].items[0]
+    if (firstItem) {
+      setCurrentComponent(firstItem.name)
+    }
+  }, [currentPackage])
+
+  const pkgData = registry[currentPackage]
+  const componentData = pkgData.items.find(item => item.name === currentComponent)
 
   return (
-    <div style={{ padding: '2rem', fontFamily: 'system-ui' }}>
-      <h1>Tools & Web3 Preview</h1>
+    <Layout
+      currentPackage={currentPackage}
+      onPackageChange={setCurrentPackage}
+      currentComponent={currentComponent}
+      onComponentChange={setCurrentComponent}
+    >
+      {componentData ? (
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-8 border-b pb-4">
+            <div className="flex items-baseline gap-3 mb-2">
+              <h1 className="text-3xl font-bold text-gray-900">{componentData.name} Usage</h1>
+              <span className="text-sm px-2 py-0.5 rounded bg-gray-100 text-gray-500 font-mono">
+                @ashy1949/repo-ui
+              </span>
+            </div>
+            <p className="text-gray-600 text-lg">{componentData.description}</p>
+          </div>
 
-      <section style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #ccc' }}>
-        <h2>Utils</h2>
-        <p><strong>Date:</strong> {formatDate(date)}</p>
-        <p><strong>Currency:</strong> {currencyFormatter(12345.67)}</p>
-        <p><strong>Truncate:</strong> {truncateString("This is a very long string that needs truncating", 20)}</p>
-        <p><strong>Deep Clone:</strong> {JSON.stringify(deepClone(cloneObj))}</p>
-      </section>
+          <section>
+            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <span className="w-1 h-6 bg-indigo-600 rounded-full"></span>
+              Live Example
+            </h2>
+            <div className="p-8 border rounded-lg bg-white shadow-sm min-h-[200px] flex items-center justify-center bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
+              <div className="w-full">
+                <componentData.component />
+              </div>
+            </div>
+          </section>
 
-      <section style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #ccc' }}>
-        <h2>Hooks</h2>
-        
-        <div style={{ marginBottom: '1rem' }}>
-          <h3>useToggle</h3>
-          <button onClick={toggle}>
-            State: {isOn ? 'ON' : 'OFF'}
-          </button>
+          <div className="mt-8 p-4 bg-indigo-50 rounded-md border border-indigo-100 text-indigo-800 text-sm">
+            <strong>Usage:</strong>
+            <code className="ml-2 bg-white px-2 py-1 rounded border border-indigo-200">
+              {`import { ${componentData.name} } from '@ashy1949/repo-ui'`}
+            </code>
+          </div>
         </div>
-
-        <div style={{ marginBottom: '1rem' }}>
-          <h3>useDebounce</h3>
-          <input 
-            value={inputValue} 
-            onChange={(e) => setInputValue(e.target.value)} 
-            placeholder="Type something..."
-          />
-          <p>Debounced Value: {debouncedValue}</p>
+      ) : (
+        <div className="flex items-center justify-center h-full text-gray-400">
+          Select an example to view details
         </div>
-
-        <div style={{ marginBottom: '1rem' }}>
-          <h3>useLocalStorage</h3>
-          <input 
-            value={storedValue} 
-            onChange={(e) => setStoredValue(e.target.value)} 
-          />
-          <p>Stored Value: {storedValue}</p>
-        </div>
-      </section>
-
-      <section style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #ccc' }}>
-        <h2>Web3 (Wagmi)</h2>
-        <p>Status: {status}</p>
-        <p>Connected: {isConnected ? 'Yes' : 'No'}</p>
-        <p>Address: {address || 'Not connected'}</p>
-        
-        {!isConnected ? (
-          <button onClick={() => connect()}>Connect Wallet</button>
-        ) : (
-          <button onClick={() => disconnect()}>Disconnect</button>
-        )}
-      </section>
-    </div>
+      )}
+    </Layout>
   )
 }
 
