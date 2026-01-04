@@ -1,5 +1,5 @@
 import { useToggle } from '@my-repo/hooks'
-import { Button } from '@my-repo/ui'
+import { Button } from 'repo-ui'
 
 export function UseToggleDemo() {
   const [isOn, toggle] = useToggle()

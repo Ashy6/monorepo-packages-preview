@@ -1,4 +1,4 @@
-import { Input } from '@my-repo/ui'
+import { Input } from 'repo-ui'
 
 export function InputDemo() {
   return (

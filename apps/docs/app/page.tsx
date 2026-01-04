@@ -1,4 +1,4 @@
-import { Button, Card } from "@my-repo/ui";
+import { Button, Card } from "repo-ui";
 
 export default function Home() {
   return (

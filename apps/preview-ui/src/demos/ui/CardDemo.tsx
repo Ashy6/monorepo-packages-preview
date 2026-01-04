@@ -1,4 +1,4 @@
-import { Card, Tag } from '@my-repo/ui'
+import { Card, Tag } from 'repo-ui'
 
 export function CardDemo() {
   return (

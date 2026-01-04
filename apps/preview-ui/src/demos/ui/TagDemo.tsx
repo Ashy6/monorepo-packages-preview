@@ -1,4 +1,4 @@
-import { Tag } from '@my-repo/ui'
+import { Tag } from 'repo-ui'
 
 export function TagDemo() {
   return (

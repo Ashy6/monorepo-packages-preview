@@ -9,7 +9,7 @@ import { UseLocalStorageDemo } from './demos/hooks/UseLocalStorageDemo'
 import { FormatDateDemo, CurrencyDemo, TruncateDemo, DeepCloneDemo } from './demos/utils/UtilsDemos'
 import { WalletDemo } from './demos/libs/WalletDemo'
 
-export type PackageName = '@my-repo/ui' | '@my-repo/hooks' | '@my-repo/utils' | '@my-repo/libs';
+export type PackageName = 'repo-ui' | '@my-repo/hooks' | '@my-repo/utils' | '@my-repo/libs';
 
 export interface ComponentDoc {
   name: string;
@@ -24,8 +24,8 @@ export interface PackageDoc {
 }
 
 export const registry: Record<PackageName, PackageDoc> = {
-  '@my-repo/ui': {
-    name: '@my-repo/ui',
+  'repo-ui': {
+    name: 'repo-ui',
     label: 'UI Components',
     items: [
       { name: 'Button', description: 'A clickable button component with different variants.', component: ButtonDemo },
