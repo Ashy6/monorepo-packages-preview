@@ -1,4 +1,4 @@
-import { useWalletConnection, config } from '@my-repo/libs'
+import { useWalletConnection, config } from '@ashy1949/repo-libs'
 import { Button, Tag } from '@ashy1949/repo-ui'
 import { WagmiProvider } from 'wagmi'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'

@@ -1,6 +1,6 @@
 {
-  "name": "@my-repo/hooks",
-  "version": "0.0.0",
+  "name": "@ashy1949/repo-hooks",
+  "version": "0.0.1",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

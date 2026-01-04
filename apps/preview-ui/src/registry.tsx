@@ -9,7 +9,7 @@ import { UseLocalStorageDemo } from './demos/hooks/UseLocalStorageDemo'
 import { FormatDateDemo, CurrencyDemo, TruncateDemo, DeepCloneDemo } from './demos/utils/UtilsDemos'
 import { WalletDemo } from './demos/libs/WalletDemo'
 
-export type PackageName = 'repo-ui' | '@my-repo/hooks' | '@my-repo/utils' | '@my-repo/libs';
+export type PackageName = '@ashy1949/repo-ui' | '@ashy1949/repo-hooks' | '@ashy1949/repo-utils' | '@ashy1949/repo-libs';
 
 export interface ComponentDoc {
   name: string;
@@ -35,8 +35,8 @@ export const registry: Record<PackageName, PackageDoc> = {
       { name: 'Tag', description: 'Label for categorizing or organizing items.', component: TagDemo },
     ]
   },
-  '@my-repo/hooks': {
-    name: '@my-repo/hooks',
+  '@ashy1949/repo-hooks': {
+    name: '@ashy1949/repo-hooks',
     label: 'React Hooks',
     items: [
       { name: 'useToggle', description: 'Hook to manage boolean state.', component: UseToggleDemo },
@@ -44,8 +44,8 @@ export const registry: Record<PackageName, PackageDoc> = {
       { name: 'useLocalStorage', description: 'Hook to manage localStorage state.', component: UseLocalStorageDemo },
     ]
   },
-  '@my-repo/utils': {
-    name: '@my-repo/utils',
+  '@ashy1949/repo-utils': {
+    name: '@ashy1949/repo-utils',
     label: 'Utilities',
     items: [
       { name: 'formatDate', description: 'Format a date object or string.', component: FormatDateDemo },
@@ -54,8 +54,8 @@ export const registry: Record<PackageName, PackageDoc> = {
       { name: 'deepClone', description: 'Deeply clone an object or array.', component: DeepCloneDemo },
     ]
   },
-  '@my-repo/libs': {
-    name: '@my-repo/libs',
+  '@ashy1949/repo-libs': {
+    name: '@ashy1949/repo-libs',
     label: 'Libraries',
     items: [
       { name: 'useWalletConnection', description: 'Wagmi wrapper for wallet connection.', component: WalletDemo },

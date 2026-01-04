@@ -1,4 +1,4 @@
-import { useLocalStorage } from '@my-repo/hooks'
+import { useLocalStorage } from '@ashy1949/repo-hooks'
 import { Button, Input } from '@ashy1949/repo-ui'
 
 export function UseLocalStorageDemo() {

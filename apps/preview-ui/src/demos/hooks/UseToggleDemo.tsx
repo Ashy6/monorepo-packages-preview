@@ -1,4 +1,4 @@
-import { useToggle } from '@my-repo/hooks'
+import { useToggle } from '@ashy1949/repo-hooks'
 import { Button } from '@ashy1949/repo-ui'
 
 export function UseToggleDemo() {

@@ -60,16 +60,16 @@ importers:
 
   apps/preview-tools:
     dependencies:
+      '@ashy1949/repo-hooks':
+        specifier: workspace:*
+        version: link:../../packages/hooks
+      '@ashy1949/repo-libs':
+        specifier: workspace:*
+        version: link:../../packages/libs
       '@ashy1949/repo-ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@my-repo/hooks':
-        specifier: workspace:*
-        version: link:../../packages/hooks
-      '@my-repo/libs':
-        specifier: workspace:*
-        version: link:../../packages/libs
-      '@my-repo/utils':
+      '@ashy1949/repo-utils':
         specifier: workspace:*
         version: link:../../packages/utils
       '@tanstack/react-query':
@@ -124,16 +124,16 @@ importers:
 
   apps/preview-ui:
     dependencies:
+      '@ashy1949/repo-hooks':
+        specifier: workspace:*
+        version: link:../../packages/hooks
+      '@ashy1949/repo-libs':
+        specifier: workspace:*
+        version: link:../../packages/libs
       '@ashy1949/repo-ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@my-repo/hooks':
-        specifier: workspace:*
-        version: link:../../packages/hooks
-      '@my-repo/libs':
-        specifier: workspace:*
-        version: link:../../packages/libs
-      '@my-repo/utils':
+      '@ashy1949/repo-utils':
         specifier: workspace:*
         version: link:../../packages/utils
       '@tanstack/react-query':

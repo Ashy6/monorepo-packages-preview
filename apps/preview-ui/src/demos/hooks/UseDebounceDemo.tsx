@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useDebounce } from '@my-repo/hooks'
+import { useDebounce } from '@ashy1949/repo-hooks'
 import { Input } from '@ashy1949/repo-ui'
 
 export function UseDebounceDemo() {

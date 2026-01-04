@@ -1,4 +1,4 @@
-import { formatDate, deepClone, currencyFormatter, truncateString } from '@my-repo/utils'
+import { formatDate, deepClone, currencyFormatter, truncateString } from '@ashy1949/repo-utils'
 
 export function FormatDateDemo() {
   const date = new Date()
