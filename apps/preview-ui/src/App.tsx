@@ -1,71 +1,66 @@
-import { useState } from 'react'
-import { Button, Input, Card, Modal, Tag } from '@my-repo/ui'
+import { useState, useEffect } from 'react'
+import { Layout } from './components/Layout'
+import { registry, PackageName } from './registry'
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [currentPackage, setCurrentPackage] = useState<PackageName>('@my-repo/ui')
+  const [currentComponent, setCurrentComponent] = useState<string>('')
+
+  // Reset component selection when package changes
+  useEffect(() => {
+    const firstItem = registry[currentPackage].items[0]
+    if (firstItem) {
+      setCurrentComponent(firstItem.name)
+    }
+  }, [currentPackage])
+
+  const pkgData = registry[currentPackage]
+  const componentData = pkgData.items.find(item => item.name === currentComponent)
 
   return (
-    <div className="p-8 space-y-8 bg-gray-50 min-h-screen">
-      <h1 className="text-3xl font-bold">UI Components Preview</h1>
-      
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Buttons</h2>
-        <div className="flex gap-4">
-          <Button variant="primary">Primary Button</Button>
-          <Button variant="secondary">Secondary Button</Button>
-          <Button variant="outline">Outline Button</Button>
-        </div>
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Inputs</h2>
-        <div className="max-w-md space-y-4">
-          <Input label="Username" placeholder="Enter username" />
-          <Input label="Password" type="password" placeholder="Enter password" />
-        </div>
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Cards</h2>
-        <div className="grid grid-cols-2 gap-4">
-          <Card title="Card Title 1">
-            <p className="text-gray-600">This is some card content. It can contain anything.</p>
-          </Card>
-          <Card title="Card Title 2">
-            <div className="flex justify-between items-center">
-              <span>Status:</span>
-              <Tag variant="success">Active</Tag>
+    <Layout
+      currentPackage={currentPackage}
+      onPackageChange={setCurrentPackage}
+      currentComponent={currentComponent}
+      onComponentChange={setCurrentComponent}
+    >
+      {componentData ? (
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-8 border-b pb-4">
+            <div className="flex items-baseline gap-3 mb-2">
+              <h1 className="text-3xl font-bold text-gray-900">{componentData.name}</h1>
+              <span className="text-sm px-2 py-0.5 rounded bg-gray-100 text-gray-500 font-mono">
+                {currentPackage}
+              </span>
             </div>
-          </Card>
-        </div>
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Tags</h2>
-        <div className="flex gap-2">
-          <Tag variant="info">Info</Tag>
-          <Tag variant="success">Success</Tag>
-          <Tag variant="warning">Warning</Tag>
-          <Tag variant="error">Error</Tag>
-        </div>
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Modal</h2>
-        <Button onClick={() => setIsModalOpen(true)}>Open Modal</Button>
-        <Modal 
-          isOpen={isModalOpen} 
-          onClose={() => setIsModalOpen(false)}
-          title="Example Modal"
-        >
-          <p className="mb-4">This is a modal component from the UI library.</p>
-          <div className="flex justify-end gap-2">
-            <Button variant="secondary" onClick={() => setIsModalOpen(false)}>Cancel</Button>
-            <Button onClick={() => setIsModalOpen(false)}>Confirm</Button>
+            <p className="text-gray-600 text-lg">{componentData.description}</p>
           </div>
-        </Modal>
-      </section>
-    </div>
+
+          <section>
+            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <span className="w-1 h-6 bg-blue-600 rounded-full"></span>
+              Preview
+            </h2>
+            <div className="p-8 border rounded-lg bg-white shadow-sm min-h-[200px] flex items-center justify-center bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
+              <div className="w-full">
+                <componentData.component />
+              </div>
+            </div>
+          </section>
+
+          <div className="mt-8 p-4 bg-blue-50 rounded-md border border-blue-100 text-blue-800 text-sm">
+            <strong>Import:</strong>
+            <code className="ml-2 bg-white px-2 py-1 rounded border border-blue-200">
+              {`import { ${componentData.name} } from '${currentPackage}'`}
+            </code>
+          </div>
+        </div>
+      ) : (
+        <div className="flex items-center justify-center h-full text-gray-400">
+          Select a component to view details
+        </div>
+      )}
+    </Layout>
   )
 }
 
